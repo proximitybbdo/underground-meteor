@@ -1,0 +1,131 @@
+<head>
+  <title>Proximity BBDO Goes Underground</title>
+</head>
+
+<body>
+
+  <div class="container">
+    {{> status }}  
+    {{> intro }}
+    {{> errors }}  
+    {{> form }}  
+  </div>
+</body>
+
+<template name="intro">
+  <hr />
+  <h1>Proximity BBDO Goes Underground</h1>
+  <hr />
+</template>
+
+<template name="status">
+  Registrations so far: {{reg_count}} 
+</template>
+
+<template name="errors">
+  {{#if errors}}
+  <div class="alert alert-error">
+    <strong>Oh snap!</strong>
+      {{#each errors}}
+      <div>
+        {{this}}
+      </div>
+      {{/each}}
+  </div>
+  {{/if}}
+</template>
+
+<template name="form">
+  {{#unless is_registered}}
+  <form action="" method="post" class="form-horizontal">
+    <div class="control-group">
+      <label class="control-label" for="date">E-mail</label>
+      <div class="controls">
+        <input type="email" id="email" name="email" value="" placeholder="e-mail" /> 
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="date">Hoe spreken we af?</label>
+      <div class="controls">
+        <label class="radio">
+          <input type="radio" id="meet_trainstation" name="meet" value="0"> Ik kom met de trein (Eurostart ticket bevat reeds treinreis naar Brussel-Zuid) <strong>(7u15 ten laatste)</strong>
+        </label>
+        <label class="radio">
+          <input type="radio" id="meet_trainstation_car" name="meet" value="0"> Ik kom met de wagen naar Brussel-Zuid en betaal daar de peperdure parking zelf, of laat me brengen, of laat me brengen. <strong>(7u15 ten laatste)</strong>
+        </label>
+        <label class="radio">
+          <input type="radio" id="meet_scheldestraat" name="meet" value="0"> Ik kom tot in de Scheldestraat <strong>(6u45 ten laatste)</strong>
+
+        </label>
+      </div>
+    </div>
+    <div class="control-group carpool">
+      <label class="control-label" for="date">Carpoolplaatsen vrij?</label>
+      <div class="controls">
+        <input type="text" class="span1" id="carpool_places" name="carpool_places" value="" placeholder="0" /> 
+        vanuit
+        <input type="text" id="carpool_start" name="carpool_start" value="" placeholder="Kortrijk" /> 
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="date">Menu</label>
+      <div class="controls">
+        <select id="menu" name="menu" data-default-val="0">
+          <option value="-1">-- menu --</option>
+          <option value="0">Vlees</option>
+          <option value="1">Vis</option>
+          <option value="2">Vegetarisch</option>
+        </select>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="damien">Wil je naar Damien Hurst?</label>
+      <div class="controls">
+        <label class="checkbox">
+          <input type="checkbox" id="damien" value="0"> Yes I'm going!
+        </label>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">Activity</label>
+      <div class="controls">
+        <div class="span2 activity" id="activity_1_wrapper">
+          <label class="control-label" for="activity_1">
+            <div><img src="//placehold.it/150x200" alt="" /></div>
+            <div><span class="label {{free_1_class}}">Free spots: {{free_1}}</span></div>
+            <div><a href="#">Website</a></div>
+            <div><input type="radio" id="activity_1" {{free_1_enabled}} name="activity" value="1" /></div>
+          </label>
+        </div>
+        <div class="span2 activity" id="activity_2_wrapper">
+          <label class="control-label" for="activity_2">
+            <div><img src="//placehold.it/150x200" alt="" /></div>
+            <div><span class="label {{free_2_class}}">Free spots: {{free_2}}</span></div>
+            <div><a href="#">Website</a></div>
+            <div><input type="radio" id="activity_2" {{free_2_enabled}} name="activity" value="2" /></div>
+          </label>
+        </div>
+        <div class="span2 activity" id="activity_3_wrapper">
+          <label class="control-label" for="activity_3">
+            <div><img src="//placehold.it/150x200" alt="" /></div>
+            <div><span class="label {{free_3_class}}">Free spots: {{free_3}}</span></div>
+            <div><a href="#">Website</a></div>
+            <div><input type="radio" id="activity_3" {{free_3_enabled}} name="activity" value="3" /></div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <input type="submit" class="btn btn-primary" />
+      <input type="reset" class="btn" />
+    </div>
+  </form>
+  {{else}}
+  <div class="alert alert-success">
+    <h2>Gelukt!</h2>
+    <p>We zien je daar.</p>
+  </div>
+  {{/unless}}
+</template>
