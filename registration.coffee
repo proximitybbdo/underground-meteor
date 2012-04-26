@@ -7,10 +7,6 @@ Registrations = new Meteor.Collection "registrations"
 
 if Meteor.is_client
 
-  Template.status.reg_count = ->
-
-    return Registrations.find().count()
-
   Template.errors.errors = ->
     return Session.get('errors')
 
@@ -43,7 +39,6 @@ if Meteor.is_client
 
   Template.form.free_3_enabled = ->
     helper_free_enabled(3)
-
 
   helper_free_class = (id) ->
     max = 0
