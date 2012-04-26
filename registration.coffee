@@ -4,7 +4,6 @@ ACTIVITY_3_MAX = 20
 ALMOST_FULL = 3
 
 Registrations = new Meteor.Collection "registrations"
-Registrations.remove({})
 
 if Meteor.is_client
 
