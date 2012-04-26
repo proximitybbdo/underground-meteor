@@ -1,9 +1,10 @@
-ACTIVITY_1_MAX = 10
-ACTIVITY_2_MAX = 10
-ACTIVITY_3_MAX = 10
-ALMOST_FULL = 10
+ACTIVITY_1_MAX = 18
+ACTIVITY_2_MAX = 20
+ACTIVITY_3_MAX = 20
+ALMOST_FULL = 3
 
 Registrations = new Meteor.Collection "registrations"
+Registrations.remove({})
 
 if Meteor.is_client
 
@@ -61,7 +62,7 @@ if Meteor.is_client
       when 2 then max = ACTIVITY_2_MAX
       when 3 then max = ACTIVITY_3_MAX
 
-    if max - Registrations.find({ activity: "" + id}).count() <= 8
+    if max - Registrations.find({ activity: "" + id}).count() <= 0
       return 'disabled'
     else
       return ''
