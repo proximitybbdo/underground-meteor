@@ -63,6 +63,7 @@ if Meteor.is_client
       when 3 then max = ACTIVITY_3_MAX
 
     if max - Registrations.find({ activity: "" + id}).count() <= 0
+      $("#activity_" + id).prop('checked', false)
       return 'disabled'
     else
       return ''
