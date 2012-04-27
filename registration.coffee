@@ -1,6 +1,6 @@
 ACTIVITY_1_MAX = 18
 ACTIVITY_2_MAX = 20
-ACTIVITY_3_MAX = 20
+ACTIVITY_3_MAX = 40
 ALMOST_FULL = 3
 
 Registrations = new Meteor.Collection "registrations"
